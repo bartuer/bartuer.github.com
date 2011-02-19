@@ -1,0 +1,109 @@
+
+*     
+*** UI  
+***** scroll
+******* TODO derive from uki scroll pane [1/3]
+        SCHEDULED: <2011-02-19 Sat 11:35>
+        CLOCK: [2011-02-19 Sat 11:37]
+        :PROPERTIES:
+        :Effort:   4:00
+        :END:
+        - [X] dev.js
+        - [ ] make_scroller 
+              (link "~/local/src/baza/public/javascripts/lib.scroll.js" 8360)
+        - [ ] width setting
+******* HALT fix bug for home app
+******* tab include different tab
+******* orientation compatible
+***** component
+******* button tab
+********* TODO uki solution [0/2]
+          SCHEDULED: <2011-02-19 Sat 15:50>
+          :PROPERTIES:
+          :Effort:   1:00
+          :END:
+          - [ ] plain segment button layout
+          - [ ] scroll pane view switch function
+********* jquerytools solution
+******* chart view
+********* DONE solution search
+          - zingchart is beautiful, but do not need almost feature
+            http://www.zingchart.com 
+          - google chart maybe more stable, just return rendered image
+            http://code.google.com/apis/ajax/playground/?type=visualization#pie_chart
+          - jquery visualize plugin looks plain and use html table
+            http://www.filamentgroup.com/dwpe/#codeexamples
+          - jqplot, plain
+            http://www.jqplot.com/tests/highlighterTests.php
+          - highchart export/print support is nice, seems very fast
+            (though SVG)
+            http://www.highcharts.com/demo/?example=area-inverted&theme=gray
+            it's code is best
+********* build
+*********** TODO build block [0/7]
+            SCHEDULED: <2011-02-19 Sat 17:05>
+            :PROPERTIES:
+            :Effort:   2:30
+            :END:
+            - [ ] stand out font
+            - [ ] mark font
+            - [ ] color scheme
+            - [ ] shadow
+            - [ ] transparent
+            - [ ] overlay
+            - [ ] jumper
+*********** TODO layout [0/4]
+            SCHEDULED: <2011-02-19 Sat 19:50>
+            :PROPERTIES:
+            :Effort:   3:00
+            :END:
+            - [ ] multiple canvas in scroll pane
+            - [ ] day
+                - stand out number
+                - date
+                - hour mark
+                - color array
+                - task overlay
+            - [ ] week
+                - stand out number
+                - day jumper
+                - day mark
+            - [ ] month
+                - stand out number
+                - week jumper
+                - week mark
+*********** ABORT try highchart
+*********** TODO json -> canvas code [0/2]
+            SCHEDULED: <2011-02-20 Sun 02:15>
+            :PROPERTIES:
+            :Effort:   1:00
+            :END:
+            - [ ] var
+            - [ ] ajax
+******* DONE font
+        at least iphone4 do not support HTML5 font feature
+        can refer http://ballotbucks.org/
+*** Exporter
+***** TODO org -> json/sheet [0/4]
+      SCHEDULED: <2011-02-20 Sun 03:30>
+      :PROPERTIES:
+      :Effort:   5:00
+      :END:
+      - [ ] agenda how to
+      - [ ] single file exporter
+      - [ ] multiple file exporter
+      - [ ] save hook
+***** TODO json/sheet diff -> notification message  [0/7]
+      SCHEDULED: <2011-02-20 Sun 08:45>
+      :PROPERTIES:
+      :Effort:   5:00
+      :END:
+      - [ ] server.rb
+      - [ ] compare Object
+      - [ ] message generator
+      - [ ] git push function
+      - [ ] notify function
+      - [ ] hook git push
+      - [ ] hook notifo
+*** DONE Notify
+    it works from beginning
