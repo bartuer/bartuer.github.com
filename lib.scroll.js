@@ -22,10 +22,11 @@ function Scroller(el, options) {
   }
 
   this.wrapper.style.height = options.height;
-  this.wrapper.style.overflow = 'hidden';
+  // this.wrapper.style.overflow = 'hidden';
   this.wrapper.style.position = 'relative';
   this.wrapper.style.zIndex = '1';
   this.wrapper.style.width = '100%';
+  this.wrapper.style.height = '100%';
   this.wrapper.style.border = '1px';
   this.wrapper.style.borderTopStyle = 'hidden';
   this.wrapper.style.borderLeftStyle = 'hidden';
@@ -81,8 +82,8 @@ Scroller.prototype = {
 
   refresh: function () {
     this.element.style.webkitTransitionDuration = '0';
-    this.scrollWidth = this.wrapper.clientWidth;
-    this.scrollHeight = this.wrapper.clientHeight;
+    this.scrollWidth = this.options.width;
+    this.scrollHeight = this.options.height;
     this.maxScrollX = this.scrollWidth - this.element.offsetWidth;
     this.maxScrollY = this.scrollHeight - this.element.offsetHeight - this.verticalMargin;
     this.momentumX = -this.maxScrollX;
@@ -105,7 +106,6 @@ Scroller.prototype = {
   setPosition: function (x, y) {
     this.x = x !== null ? x : this.x;
     this.y = y !== null ? y : this.y;
-
     this.element.style.webkitTransform = 'translate3d(' + this.x + 'px,' + this.y + 'px,0)';
   },
 
@@ -222,6 +222,7 @@ Scroller.prototype = {
   },
 
   onTouchEnd: function (e) {
+
     if (e.targetTouches.length > 0) {
       return false;
     }
@@ -232,6 +233,7 @@ Scroller.prototype = {
       e.changedTouches[0].target.dispatchEvent(theEvent);
       return false;
     }
+
 
     var time = e.timeStamp - this.scrollStartTime,
       scroll_x = this.x,
