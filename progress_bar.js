@@ -6,6 +6,7 @@ var tools = {};
   include('frameworks/uki/src/uki-data/ajax.js');
   include('frameworks/uki/src/uki-data/model.js');
   include('frameworks/uki/src/uki-view/view/canvas.js');
+  include('frameworks/uki/src/uki-more/more/view/toggleButton.js');
   tools.progressBar = {};
 
   tools.progressBar.canvas = uki.newClass(uki.view.Canvas, new
@@ -37,11 +38,25 @@ var tools = {};
           childViews: []
         },
         {
-          view: 'Button',
-          rect: '280 10 100 22',
+          view: 'uki.more.view.ToggleButton',
+          rect: '90 10 80 30',
+          anchors: 'top right',
+          text: 'Month',
+          name: 'month'
+        },
+        {
+          view: 'uki.more.view.ToggleButton',
+          rect: '200 10 80 30',
+          anchors: 'top right',
+          text: 'Week',
+          name: 'week'
+        },
+        {
+          view: 'uki.more.view.ToggleButton',
+          rect: '310 10 80 30',
           anchors: 'top right',
           text: 'Day',
-          name: 'Day'
+          name: 'day'
         }]
       },
       {

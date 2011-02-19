@@ -2,15 +2,16 @@
 *     
 *** UI  
 ***** scroll
-******* TODO derive from uki scroll pane [3/3]
+******* DONE derive from uki scroll pane [3/3]
         SCHEDULED: <2011-02-19 Sat 11:35>
-        CLOCK: [2011-02-19 Sat 19:02]
+        CLOCK: [2011-02-19 Sat 19:02]--[2011-02-19 Sat 20:31] =>  1:29
         :PROPERTIES:
         :Effort:   4:00
         :Clockhistory: 3
         | :Clock1: | [2011-02-19 Sat 11:37]--[2011-02-19 Sat 14:22] =>  2:45 | easy method impossible |
         | :Clock2: | [2011-02-19 Sat 14:25]--[2011-02-19 Sat 16:00] =>  1:35 | can not set right w/h  |
         | :Clock3: | [2011-02-19 Sat 18:03]--[2011-02-19 Sat 18:22] =>  0:19 | root cause             |
+        :Commit:   (git-link "/Users/bartuer/local/src/bartuer.github.com" "derive_from_uki_scroll_pane")
         :END:
         - [X] dev.js
         - [X] make_scroller 
@@ -22,13 +23,14 @@
 ******* orientation compatible
 ***** component
 ******* button tab
-********* TODO uki solution [0/2]
+********* TODO uki solution [2/2]
           SCHEDULED: <2011-02-19 Sat 15:50>
+          CLOCK: [2011-02-19 Sat 20:33]
           :PROPERTIES:
           :Effort:   1:00
           :END:
-          - [ ] plain segment button layout
-          - [ ] scroll pane view switch function
+          - [X] plain segment button layout
+          - [X] scroll pane view switch function
 ********* jquerytools solution
 ******* chart view
 ********* DONE solution search
