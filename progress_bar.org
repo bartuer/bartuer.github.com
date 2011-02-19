@@ -23,11 +23,12 @@
 ******* orientation compatible
 ***** component
 ******* button tab
-********* TODO uki solution [2/2]
+********* DONE uki solution [2/2]
           SCHEDULED: <2011-02-19 Sat 15:50>
-          CLOCK: [2011-02-19 Sat 20:33]
+          CLOCK: [2011-02-19 Sat 20:33]--[2011-02-19 Sat 20:56] =>  0:23
           :PROPERTIES:
           :Effort:   1:00
+          :Commit:   (git-link "/Users/bartuer/local/src/bartuer.github.com" "uki_solution")
           :END:
           - [X] plain segment button layout
           - [X] scroll pane view switch function
@@ -47,16 +48,18 @@
             http://www.highcharts.com/demo/?example=area-inverted&theme=gray
             it's code is best
 ********* build
-*********** TODO build block [0/7]
+*********** TODO build block [5/7]
             SCHEDULED: <2011-02-19 Sat 17:05>
+            CLOCK: [2011-02-19 Sat 21:00]
             :PROPERTIES:
             :Effort:   2:30
             :END:
-            - [ ] stand out font
-            - [ ] mark font
-            - [ ] color scheme
-            - [ ] shadow
-            - [ ] transparent
+            - [X] stand out font
+                  3.2 has bug, use strokeText
+            - [X] mark font
+            - [X] color scheme
+            - [X] shadow
+            - [X] transparent
             - [ ] overlay
             - [ ] jumper
 *********** TODO layout [0/4]

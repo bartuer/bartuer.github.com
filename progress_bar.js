@@ -10,6 +10,7 @@ var tools = {};
   tools.progressBar = {};
 
   tools.progressBar.canvas = uki.newClass(uki.view.Canvas, new
+
   function () {
     var Base = uki.view.Canvas.prototype;
 
@@ -91,6 +92,14 @@ var tools = {};
     ctx.fillStyle = 'grey';
     ctx.fillRect(0, 0, w, h);
 
+    document.font_feature = check_textRenderContext(ctx);
+    set_textRenderContext(ctx);
+    console.log(ctx.fillText);
+    function drawtext(ctx) {
+      ctx.strokeText('Hey,', 10, 10, 32, 200, 150, 100);
+      ctx.strokeText('24', 140, 5, 24, 50, 100, 100);
+    }
+    drawtext(ctx);
     return p;
   };
 
