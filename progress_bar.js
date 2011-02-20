@@ -6,6 +6,7 @@ var tools = {};
   include('frameworks/uki/src/uki-data/ajax.js');
   include('frameworks/uki/src/uki-data/model.js');
   include('frameworks/uki/src/uki-view/view/canvas.js');
+  include('frameworks/uki/src/uki-view/view/flow.js');
   include('dev.js');
   include('lib.scroll.js');
   include('strokeText.js');
@@ -74,16 +75,32 @@ var tools = {};
           rect: '0 0 800 600',
           anchors: 'left top right bottom',
           childViews: [{
-            view: 'tools.progressBar.canvas',
-            rect: '0 0 800 600',
-            background: 'black',
-            anchors: 'top left right bottom',
-            style: {
-              border: 'dashed 2px #999'
-            }
-
+            view: 'HFlow',
+            rect: '0 0 0 300',
+            anchors: 'left top',
+            background: '#CCC',
+            className: 'flow',
+            childViews: [{
+              view: 'tools.progressBar.canvas',
+              rect: '0 0 315 250',
+              background: 'black',
+              anchors: 'top left right bottom',
+              name:  'day',
+              style: {
+                border: 'dashed 2px #999'
+              }
+                         },
+                        {
+              view: 'tools.progressBar.canvas',
+              rect: '0 0 315 250',
+              background: 'black',
+              anchors: 'top left right bottom',
+              name: 'week',
+              style: {
+                border: 'dashed 2px #999'
+              }
+            }]
           }]
-
         }]
       }]
     });
@@ -104,9 +121,10 @@ var tools = {};
       width: 200
     });
 
-    var canvas = progressBar.find('Canvas')[0];
-    draw(canvas);
-    draw(canvas);
+    var canvas_0 = progressBar.find('Canvas')[0];
+    draw_day(canvas_0);
+    var canvas_1 = progressBar.find('Canvas')[1];
+    draw_week(canvas_1);
   };
 
   var img_cache = {};
@@ -146,8 +164,8 @@ var tools = {};
     return img_cache[key];
   }
 
-  function draw(canvas) {
-    var ctx = canvas.width(400).height(300).ctx();
+  function draw_day(canvas) {
+    var ctx = canvas.width(316).height(250).ctx();
     var w = canvas.width();
     var h = canvas.height();
     ctx.fillStyle = 'white';
@@ -156,15 +174,22 @@ var tools = {};
     document.font_feature = check_textRenderContext(ctx);
     set_textRenderContext(ctx);
 
-    ctx.strokeText('80%', 50, 80, 32, 200, 100, 90);
-    ctx.strokeText('2011-02-20 Sun', 185, 90, 14, 100, 100, 90);
+    ctx.strokeText('80%', 35, 40, 32, 200, 100, 90);
+    ctx.strokeText('2011-02-20 Sun', 135, 58, 14, 100, 100, 90);
 
     ctx.drawImage(make_gauge({
       width: 300,
       height: 99,
       values: [43.15, 35, 9.65, 12.2]
-    }), 50, 150);
+    }), 8, 100);
   }
 
+  function draw_week( canvas ) {
+    var ctx = canvas.width(316).height(250).ctx();
+    var w = canvas.width();
+    var h = canvas.height();
+    ctx.fillStyle = 'grey';
+    ctx.fillRect(0, 0, w, h);
+  }
 
 })();
