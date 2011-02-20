@@ -63,19 +63,21 @@
             - [X] transparent
             - [ ] overlay
             - [ ] jumper
-*********** TODO layout [0/4]
+*********** TODO layout [2/4]
             SCHEDULED: <2011-02-19 Sat 19:50>
-            CLOCK: [2011-02-20 Sun 09:41]
             :PROPERTIES:
             :Effort:   3:00
+            :Clockhistory: 2
+            | :Clock1: | [2011-02-20 Sun 09:41]--[2011-02-20 Sun 13:03] =>  3:22 | init  |
+            | :Clock2: | [2011-02-20 Sun 16:03]--[2011-02-20 Sun 20:57] =>  4:54 | break |
             :END:
-            - [ ] day
+            - [X] day
                 - stand out number
                 - date
                 - hour mark
                 - color array
                 - task overlay
-            - [ ] multiple canvas in scroll pane
+            - [X] multiple canvas in scroll pane
             - [ ] week
                 - stand out number
                 - day mark

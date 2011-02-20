@@ -12,7 +12,9 @@ var tools = {};
   include('gauge.js');
   tools.progressBar = {};
 
-  tools.progressBar.canvas = uki.newClass(uki.view.Canvas, new function () {
+  tools.progressBar.canvas = uki.newClass(uki.view.Canvas, new
+
+  function () {
     var Base = uki.view.Canvas.prototype;
     this._createDom = function () {
       Base._createDom.call(this);
@@ -102,28 +104,66 @@ var tools = {};
       width: 200
     });
 
-    draw('canvas_container');
+    var canvas = progressBar.find('Canvas')[0];
+    draw(canvas);
+    draw(canvas);
   };
 
-  function draw(container) {
+  var img_cache = {};
 
-    var canvas_id = gauge.add(document.getElementById(container), {
-     width: 300,
-     height: 99,
-     radius: 0.5,
-     values: [43.15, 35, 9.65, 12.2],
-     colors: ['#316DC8', '#DF7510', '#64A8E5', '#00aa00']
-   });
+  function make_gauge(option) {
 
-    var canvas = document.getElementById(canvas_id);
-    var ctx = canvas.ctx;
+    var width = option.width;
+    var height = option.height;
+    var values = option.values;
+    var values_str = '';
+    for (var i = 0; i < values.length; i += 1) {
+      values_str += values[i].toString(10);
+    }
+    var key = width.toString(16) + height.toString(16) + values_str;
+    if (img_cache[key] === undefined) {
+
+      var gauge_container = document.createElement('div');
+      gauge_container.id = 'gauge_container';
+      var mount_point = document.getElementById('canvas_container');
+      mount_point.appendChild(gauge_container);
+
+      var canvas_id = gauge.add(gauge_container, {
+        scale: 6,
+        width: option.width,
+        height: option.height,
+        radius: 0.5,
+        values: option.values,
+        colors: ['#316DC8', '#DF7510', '#64A8E5', '#00aa00']
+      });
+
+      var gcanvas = document.getElementById(canvas_id);
+
+      var img = uki.createElement('img');
+      img.src = gcanvas.toDataURL();
+      img_cache[key] = img;
+    }
+    return img_cache[key];
+  }
+
+  function draw(canvas) {
+    var ctx = canvas.width(400).height(300).ctx();
+    var w = canvas.width();
+    var h = canvas.height();
+    ctx.fillStyle = 'white';
+    ctx.fillRect(0, 0, w, h);
 
     document.font_feature = check_textRenderContext(ctx);
     set_textRenderContext(ctx);
 
-    ctx.strokeText('240%,', 10, 60, 32, 150, 150, 100);
-    ctx.strokeText('hey', 175, 60, 24, 50, 100, 100);
+    ctx.strokeText('80%', 50, 80, 32, 200, 100, 90);
+    ctx.strokeText('2011-02-20 Sun', 185, 90, 14, 100, 100, 90);
 
+    ctx.drawImage(make_gauge({
+      width: 300,
+      height: 99,
+      values: [43.15, 35, 9.65, 12.2]
+    }), 50, 150);
   }
 
 

@@ -118,7 +118,7 @@ var gauge = {
           self.wk4 = navigator.appVersion.indexOf('WebKit') != -1 && !document.defaultCharset ? 1 : 0;
           self.ge8 = navigator.userAgent.indexOf('Gecko') > -1 && window.updateCommands && !window.external ? 1 : 0;
         }
-    debugger;
+
 
         if (self || self.getContext("2d")) {
           self.options = options;
