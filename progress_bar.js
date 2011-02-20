@@ -6,7 +6,9 @@ var tools = {};
   include('frameworks/uki/src/uki-data/ajax.js');
   include('frameworks/uki/src/uki-data/model.js');
   include('frameworks/uki/src/uki-view/view/canvas.js');
-  include('frameworks/uki/src/uki-more/more/view/toggleButton.js');
+  include('dev.js');
+  include('lib.scroll.js');
+  include('strokeText.js');
   tools.progressBar = {};
 
   tools.progressBar.canvas = uki.newClass(uki.view.Canvas, new
@@ -39,21 +41,21 @@ var tools = {};
           childViews: []
         },
         {
-          view: 'uki.more.view.ToggleButton',
+          view: 'Button',
           rect: '90 10 80 30',
           anchors: 'top right',
           text: 'Month',
           name: 'month'
         },
         {
-          view: 'uki.more.view.ToggleButton',
+          view: 'Button',
           rect: '200 10 80 30',
           anchors: 'top right',
           text: 'Week',
           name: 'week'
         },
         {
-          view: 'uki.more.view.ToggleButton',
+          view: 'Button',
           rect: '310 10 80 30',
           anchors: 'top right',
           text: 'Day',
@@ -89,18 +91,35 @@ var tools = {};
     var ctx = canvas.width(800).height(600).ctx();
     var w = canvas.width();
     var h = canvas.height();
+    document.font_feature = check_textRenderContext(ctx);
+    set_textRenderContext(ctx);
+
     ctx.fillStyle = 'grey';
     ctx.fillRect(0, 0, w, h);
 
-    document.font_feature = check_textRenderContext(ctx);
-    set_textRenderContext(ctx);
-    console.log(ctx.fillText);
     function drawtext(ctx) {
-      ctx.strokeText('Hey,', 10, 10, 32, 200, 150, 100);
-      ctx.strokeText('24', 140, 5, 24, 50, 100, 100);
+      ctx.strokeText('240%,', 10, 10, 32, 150, 150, 100);
+      ctx.strokeText('hey', 180, 5, 24, 50, 100, 100);
     }
     drawtext(ctx);
+
+
     return p;
   };
+
+  window.onload = function () {
+    var progressBar = tools.progressBar.build();
+    maindiv = document.getElementById('main');
+    progressBar.attachTo(window, '400 400');
+
+    document['canvas_scroller'] = new Scroller('canvas_container', {
+      scrollY: true,
+      scrollX: true,
+      height: 200,
+      width: 200
+    });
+
+  };
+
 
 })();

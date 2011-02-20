@@ -48,11 +48,12 @@
             http://www.highcharts.com/demo/?example=area-inverted&theme=gray
             it's code is best
 ********* build
-*********** TODO build block [5/7]
+*********** DONE build block [5/7]
             SCHEDULED: <2011-02-19 Sat 17:05>
-            CLOCK: [2011-02-19 Sat 21:00]
+            CLOCK: [2011-02-19 Sat 21:00]--[2011-02-19 Sat 22:21] =>  1:21
             :PROPERTIES:
             :Effort:   2:30
+            :Commit:   (git-link "/Users/bartuer/local/src/bartuer.github.com" "build_block")
             :END:
             - [X] stand out font
                   3.2 has bug, use strokeText
@@ -64,35 +65,40 @@
             - [ ] jumper
 *********** TODO layout [0/4]
             SCHEDULED: <2011-02-19 Sat 19:50>
+            CLOCK: [2011-02-20 Sun 09:41]
             :PROPERTIES:
             :Effort:   3:00
             :END:
-            - [ ] multiple canvas in scroll pane
             - [ ] day
                 - stand out number
                 - date
                 - hour mark
                 - color array
                 - task overlay
+            - [ ] multiple canvas in scroll pane
             - [ ] week
                 - stand out number
-                - day jumper
                 - day mark
+                - day jumper
             - [ ] month
                 - stand out number
-                - week jumper
                 - week mark
+                - week jumper
 *********** ABORT try highchart
-*********** TODO json -> canvas code [0/2]
+*********** TODO json -> canvas code [1/2]
             SCHEDULED: <2011-02-20 Sun 02:15>
             :PROPERTIES:
             :Effort:   1:00
             :END:
             - [ ] var
-            - [ ] ajax
+            - [X] ajax
+                  if build all into one huge html, this is unnecessary 
 ******* DONE font
-        at least iphone4 do not support HTML5 font feature
-        can refer http://ballotbucks.org/
+
+        - at least iphone4 do not support HTML5 font feature
+          can refer http://ballotbucks.org/
+        - finally use strokeText
+        
 *** Exporter
 ***** TODO org -> json/sheet [0/4]
       SCHEDULED: <2011-02-20 Sun 03:30>

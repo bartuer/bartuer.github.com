@@ -2,11 +2,7 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
-    <script src='lib.prototype.js'></script>
-    <script src='lib.scroll.js'></script>
-    <script src='strokeText.js'></script>
     <script src='progress_bar.cjs'></script>
-
     <meta http-equiv="Content-Type"
     content="text/html; charset=utf-8" />
     <meta name="viewport"
@@ -17,22 +13,5 @@
     <title>bartuer's progress bar</title>
   </head>
   <body>
-    <div id="main" >
-        
-    </div>
-    <script type="text/javascript">
-
-    var progressBar = tools.progressBar.build();
-    maindiv = document.getElementById('main');
-    progressBar.attachTo(window, '400 400');
-
-    document['canvas_scroller'] = new Scroller('canvas_container', {
-      scrollY: true,
-      scrollX: true,
-      height: 200,
-      width: 200
-    });
-    </script>
-    <script src="dev.js"></script>
   </body>
 </html>
