@@ -63,7 +63,7 @@
             - [X] transparent
             - [ ] overlay
             - [ ] jumper
-*********** TODO layout [2/4]
+*********** TODO layout [4/4]
             SCHEDULED: <2011-02-19 Sat 19:50>
             :PROPERTIES:
             :Effort:   3:00
@@ -78,11 +78,11 @@
                 - color array
                 - task overlay
             - [X] multiple canvas in scroll pane
-            - [ ] week
+            - [X] week
                 - stand out number
                 - day mark
                 - day jumper
-            - [ ] month
+            - [X] month
                 - stand out number
                 - week mark
                 - week jumper

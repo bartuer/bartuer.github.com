@@ -85,12 +85,12 @@ var tools = {};
               rect: '0 0 315 250',
               background: 'black',
               anchors: 'top left right bottom',
-              name:  'day',
+              name: 'day',
               style: {
                 border: 'dashed 2px #999'
               }
-                         },
-                        {
+            },
+            {
               view: 'tools.progressBar.canvas',
               rect: '0 0 315 250',
               background: 'black',
@@ -130,7 +130,6 @@ var tools = {};
   var img_cache = {};
 
   function make_gauge(option) {
-
     var width = option.width;
     var height = option.height;
     var values = option.values;
@@ -142,18 +141,18 @@ var tools = {};
     if (img_cache[key] === undefined) {
 
       var gauge_container = document.createElement('div');
-      gauge_container.id = 'gauge_container';
+      gauge_container.id = undefined;
+      // gauge_container.style.display = 'none';
       var mount_point = document.getElementById('canvas_container');
       mount_point.appendChild(gauge_container);
 
-      var canvas_id = gauge.add(gauge_container, {
-        scale: 6,
-        width: option.width,
-        height: option.height,
+      var default_option = {
+        colors: ['#316DC8', '#DF7510', '#64A8E5', '#00aa00'],
         radius: 0.5,
-        values: option.values,
-        colors: ['#316DC8', '#DF7510', '#64A8E5', '#00aa00']
-      });
+        scale: 6
+      };
+
+      var canvas_id = gauge.add(gauge_container, uki.extend({}, default_option, option));
 
       var gcanvas = document.getElementById(canvas_id);
 
@@ -184,12 +183,31 @@ var tools = {};
     }), 8, 100);
   }
 
-  function draw_week( canvas ) {
+  function draw_week(canvas) {
     var ctx = canvas.width(316).height(250).ctx();
     var w = canvas.width();
     var h = canvas.height();
-    ctx.fillStyle = 'grey';
+    ctx.fillStyle = 'white';
     ctx.fillRect(0, 0, w, h);
+    var a = [0.7, 0.65, 0.37, 0.48, 0.84, 0.75, 0.92];
+    var d = ['Sun', 'Mon', 'Tue', 'Wen', 'Thu', 'Fri', 'Sat'];
+
+    document.font_feature = check_textRenderContext(ctx);
+    set_textRenderContext(ctx);
+
+    for (var i = 0; i < 7; i += 1) {
+      ctx.drawImage(make_gauge({
+        scale: 4,
+        vertical: true,
+        limit: true,
+        gradient: true,
+        width: 29,
+        height: 200,
+        values: [a[i], 1],
+        colors: ['#316DC8', '#9E42EE']
+      }), 25 + 40 * i, 20);
+      ctx.strokeText(d[i], 25 + 40 * i , 220, 12, 150, 100, 90);
+    }
   }
 
 })();
