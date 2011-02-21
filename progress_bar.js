@@ -142,7 +142,7 @@ var tools = {};
 
       var gauge_container = document.createElement('div');
       gauge_container.id = undefined;
-      // gauge_container.style.display = 'none';
+      gauge_container.style.display = 'none';
       var mount_point = document.getElementById('canvas_container');
       mount_point.appendChild(gauge_container);
 

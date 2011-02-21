@@ -67,9 +67,10 @@
             SCHEDULED: <2011-02-19 Sat 19:50>
             :PROPERTIES:
             :Effort:   3:00
-            :Clockhistory: 2
-            | :Clock1: | [2011-02-20 Sun 09:41]--[2011-02-20 Sun 13:03] =>  3:22 | init  |
-            | :Clock2: | [2011-02-20 Sun 16:03]--[2011-02-20 Sun 20:57] =>  4:54 | break |
+            :Clockhistory: 3
+            | :Clock1: | [2011-02-20 Sun 09:41]--[2011-02-20 Sun 13:03] =>  3:22 | init             |
+            | :Clock2: | [2011-02-20 Sun 16:03]--[2011-02-20 Sun 20:57] =>  4:54 | break            |
+            | :Clock3: | [2011-02-21 Mon 10:33]--[2011-02-21 Mon 11:45] =>  1:12 | performance data |
             :END:
             - [X] day
                 - stand out number
@@ -86,6 +87,70 @@
                 - stand out number
                 - week mark
                 - week jumper
+*********** TODO performance [1/4]
+            :PROPERTIES:
+            :Effort:   2:00
+            :END:
+            - [X] profile
+  
+                |------+-------+------------------------------------------------|
+                | Self | Total | Function                                       |
+                |------+-------+------------------------------------------------|
+                | 84ms | 91ms  | Script:-http://localhost:3333/progress_bar.cjs |
+                | 21ms | 21ms  | toDataURL                                      |
+                | 18ms | 33ms  | dispatch                                       |
+                | 15ms | 15ms  | dispatch-{1}                                   |
+                | 15ms | 20ms  | Script:-http://localhost:3333/lib.prototype.js |
+                | 13ms | 13ms  | set-src                                        |
+                | 11ms | 11ms  | fillRect                                       |
+                | 8ms  | 10ms  | InjectedScript.dispatch                        |
+                | 7ms  | 89ms  | progress_bar.cjs:10626-make_gauge              |
+                | 5ms  | 5ms   | stroke                                         |
+                | 4ms  | 28ms  | progress_bar.cjs:10024-gauge.add               |
+                | 4ms  | 4ms   | drawImage                                      |
+                | 4ms  | 14ms  | progress_bar.cjs:3775-init                     |
+                | 3ms  | 3ms   | progress_bar.cjs:10025-uniqueID                |
+                | 3ms  | 3ms   | get-cssText                                    |
+                | 3ms  | 3ms   | getStyles                                      |
+                | 3ms  | 20ms  | progress_bar.cjs:10114-gauge.modify            |
+                | 2ms  | 2ms   | InjectedScript._ensureCommandLineAPIInstalled  |
+                | 2ms  | 2ms   | set-className                                  |
+                | 2ms  | 2ms   | cloneNode                                      |
+                | 2ms  | 2ms   | progress_bar.cjs:9395-Scroller                 |
+                | 2ms  | 3ms   | progress_bar.cjs:2400-uki.view.declare         |
+                |------+-------+------------------------------------------------|
+
+                |-------+---------+---------+---------|
+                |       | Code    | Objects | Total   |
+                |-------+---------+---------+---------|
+                | count | 7072    | 34093   | 41165   |
+                | size  | 2.177MB | 2.198MB | 4.375MB |
+                |-------+---------+---------+---------|
+
+                |--------------------------+-------+----------|
+                | Constructor              | Count | Size     |
+                |--------------------------+-------+----------|
+                | (code)                   |  7072 | 2.177MB  |
+                | (closure)                |  5981 | 761.32KB |
+                | String                   | 11738 | 319.34KB |
+                | Array                    |  8519 | 316.16KB |
+                | Object                   |  2469 | 140.54KB |
+                | Function                 |  2460 | 77.81KB  |
+                | (anonymous)              |    15 | 62.88KB  |
+                | HTMLCanvasElement        |    21 | 49.01KB  |
+                | inheritance              |    56 | 26.16KB  |
+                | klass                    |    52 | 19.32KB  |
+                | (global_property)        |  1908 | 14.91KB  |
+                | RegExp                   |    88 | 4.47KB   |
+                | uki.fn.uki.Collection    |     1 | 3.04KB   |
+                | HTMLDivElement           |    73 | 2.69KB   |
+                | RangeError               |     4 | 1.66KB   |
+                | Arguments                |    35 | 1.11KB   |
+                |--------------------------+-------+----------|
+
+            - [ ] guage code style
+            - [ ] remove toDataURL method
+            - [ ] painting code
 *********** ABORT try highchart
 *********** TODO json -> canvas code [1/2]
             SCHEDULED: <2011-02-20 Sun 02:15>
