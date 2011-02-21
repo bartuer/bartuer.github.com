@@ -65,6 +65,7 @@
             - [ ] jumper
 *********** TODO layout [4/4]
             SCHEDULED: <2011-02-19 Sat 19:50>
+            CLOCK: [2011-02-21 Mon 15:38]
             :PROPERTIES:
             :Effort:   3:00
             :Clockhistory: 3
@@ -87,12 +88,13 @@
                 - stand out number
                 - week mark
                 - week jumper
-*********** TODO performance [4/4]
-            CLOCK: [2011-02-21 Mon 14:17]
+*********** DONE performance [4/4]
+            CLOCK: [2011-02-21 Mon 14:17]--[2011-02-21 Mon 15:38] =>  1:21
             :PROPERTIES:
             :Effort:   2:00
             :Clockhistory: 1
             | :Clock1: | [2011-02-21 Mon 12:27]--[2011-02-21 Mon 14:05] =>  1:38 | entrance |
+            :Commit:   (git-link "/Users/bartuer/local/src/bartuer.github.com" "performance")
             :END:
             - [X] profile
   

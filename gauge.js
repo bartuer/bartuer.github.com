@@ -103,9 +103,24 @@ var gauge = {
     }
 
     function fill(x, y, w, h) {
-      self.ctx.fillRect(x, y, w, h);
+      self.ctx.fillRect(x + self.left, y + self.top, w, h);
     }
 
+    self.lineTo = function( x, y ) {
+      this.ctx.lineTo( x + self.left, y + self.top);
+    };
+
+    self.moveTo = function( x, y ) {
+      this.ctx.moveTo( x + this.left, y + this.top);
+    };
+
+    self.quadraticCurveTo = function( cx, cy, x, y ) {
+      this.ctx.quadraticCurveTo( cx + this.left, cy + this.top, x + this.left, y + this.top);
+    };
+
+    self.createLinearGradient = function( x1, y1, x2, y2 ) {
+      return this.ctx.createLinearGradient( x1 + this.left, y1 + this.top, x2 + this.left, y2 + this.top);
+    };
 
     function configure(self, options) {
       var vo, width, height, defopts = {
@@ -146,6 +161,8 @@ var gauge = {
       self.options = options;
       self.height = height;
       self.width = width;
+      self.top = options.top;
+      self.left = options.left;
 
       self.cc = (typeof options.empty === 'string' ? options.empty : self.options.empty);
       self.cc = self.cc.match(/^#[0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f]$/i) ? self.cc : gauge.defaultEmpty;
@@ -186,7 +203,7 @@ var gauge = {
 
     function paint(self) {
 
-      g = self.ctx.createLinearGradient(0, 0, (v ? w : 0), (v ? 0 : h));
+      g = self.createLinearGradient(0, 0, (v ? w : 0), (v ? 0 : h));
       g.addColorStop(0, 'rgba(255,255,255,0.75)');
       g.addColorStop(0.05, 'rgba(255,255,255,0.5)');
       g.addColorStop(0.5, 'rgba(127,127,127,0.4)');
@@ -196,18 +213,18 @@ var gauge = {
       self.ctx.lineCap = 'butt';
       self.ctx.save();
       self.ctx.beginPath();
-      self.ctx.moveTo(0, h - q);
-      self.ctx.quadraticCurveTo(0, h, q, h);
-      self.ctx.quadraticCurveTo(0, h, 0, h + q);
-      self.ctx.lineTo(0, h + r);
-      self.ctx.lineTo(w, h + r);
-      self.ctx.lineTo(w, h + q);
-      self.ctx.quadraticCurveTo(w, h, w - q, h);
-      self.ctx.quadraticCurveTo(w, h, w, h - q);
-      self.ctx.lineTo(w, q);
-      self.ctx.quadraticCurveTo(w, 0, w - q, 0);
-      self.ctx.lineTo(q, 0);
-      self.ctx.quadraticCurveTo(0, 0, 0, q);
+      self.moveTo(0, h - q);
+      self.quadraticCurveTo(0, h, q, h);
+      self.quadraticCurveTo(0, h, 0, h + q);
+      self.lineTo(0, h + r);
+      self.lineTo(w, h + r);
+      self.lineTo(w, h + q);
+      self.quadraticCurveTo(w, h, w - q, h);
+      self.quadraticCurveTo(w, h, w, h - q);
+      self.lineTo(w, q);
+      self.quadraticCurveTo(w, 0, w - q, 0);
+      self.lineTo(q, 0);
+      self.quadraticCurveTo(0, 0, 0, q);
       self.ctx.closePath();
       self.ctx.clip();
 
@@ -221,7 +238,7 @@ var gauge = {
           s = (v ? h : w) * (Math.abs(self.vl[0]) / m);
           a = pick(0);
           z = pick(1);
-          c = self.ctx.createLinearGradient(0, 0, (v ? 0 : w), (v ? h : 0));
+          c = self.createLinearGradient(0, 0, (v ? 0 : w), (v ? h : 0));
           c.addColorStop((v ? 1 : 0), 'rgba(' + hex2rgb(a) + ',1)');
           c.addColorStop((v ? 0 : 1), 'rgba(' + hex2rgb(z) + ',1)');
           x = x + e;
@@ -277,20 +294,20 @@ var gauge = {
       self.ctx.fillStyle = g;
       fill(0, 0, w, h);
       if (!self.ns) {
-        g = self.ctx.createLinearGradient((v ? 0.5 : 0), (v ? 0 : 0.5), (v ? w : 0), (v ? 0 : h));
+        g = self.createLinearGradient((v ? 0.5 : 0), (v ? 0 : 0.5), (v ? w : 0), (v ? 0 : h));
         g.addColorStop(0, "rgba(254,254,254,1)");
         g.addColorStop(0.66, "rgba(254,254,254,0.8)");
         g.addColorStop(1, "rgba(254,254,254,0)");
         if (v) {
           for (i = 0; i < k; i += 1) {
             self.ctx.beginPath();
-            self.ctx.moveTo(0.5, h - (b + (i * b) + 0.5));
-            self.ctx.lineTo(w, h - (b + (i * b) + 0.5));
+            self.moveTo(0.5, h - (b + (i * b) + 0.5));
+            self.lineTo(w, h - (b + (i * b) + 0.5));
             self.ctx.strokeStyle = 'rgba(0,0,0,0.75)';
             self.ctx.stroke();
             self.ctx.beginPath();
-            self.ctx.moveTo(0.5, h - (b + (i * b)));
-            self.ctx.lineTo(w, h - (b + (i * b)));
+            self.moveTo(0.5, h - (b + (i * b)));
+            self.lineTo(w, h - (b + (i * b)));
             self.ctx.strokeStyle = g;
             self.ctx.stroke();
           }
@@ -298,26 +315,26 @@ var gauge = {
         else {
           for (i = 0; i < k; i += 1) {
             self.ctx.beginPath();
-            self.ctx.moveTo(b + (i * b), 0.5);
-            self.ctx.lineTo(b + (i * b), h + r);
+            self.moveTo(b + (i * b), 0.5);
+            self.lineTo(b + (i * b), h + r);
             self.ctx.strokeStyle = 'rgba(0,0,0,0.75)';
             self.ctx.stroke();
             self.ctx.beginPath();
-            self.ctx.moveTo(b + (i * b) + 0.5, 0.5);
-            self.ctx.lineTo(b + (i * b) + 0.5, h);
+            self.moveTo(b + (i * b) + 0.5, 0.5);
+            self.lineTo(b + (i * b) + 0.5, h);
             self.ctx.strokeStyle = g;
             self.ctx.stroke();
           }
         }
       }
 
-      g1 = self.ctx.createLinearGradient(0, h, 0, h + r);
+      g1 = self.createLinearGradient(0, h, 0, h + r);
       g1.addColorStop(0, "rgba(255,255,255,0.5)");
       g1.addColorStop(1, "rgba(255,255,255,1)");
       self.ctx.fillStyle = g1;
       fill(0, h, w, h + r);
       self.ctx.globalCompositeOperation = "destination-out";
-      g = self.ctx.createLinearGradient(0, h, 0, h + r);
+      g = self.createLinearGradient(0, h, 0, h + r);
       g.addColorStop(0, "rgba(0,0,0,1)");
       g.addColorStop(0.1, "rgba(0,0,0,0.5)");
       g.addColorStop(0.5, "rgba(0,0,0,0)");

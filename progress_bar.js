@@ -7,6 +7,7 @@ var tools = {};
   include('frameworks/uki/src/uki-data/model.js');
   include('frameworks/uki/src/uki-view/view/canvas.js');
   include('frameworks/uki/src/uki-view/view/flow.js');
+  include('dev.js');
   include('lib.scroll.js');
   include('strokeText.js');
   include('gauge.js');
@@ -152,7 +153,7 @@ var tools = {};
     ctx.strokeText('2011-02-20 Sun', 135, 58 + 150, 14, 100, 100, 90);
 
     make_gauge({ctx: ctx},{
-      top: 100,
+      top: 70,
       left: 8,
       width: 300,
       height: 99,
