@@ -157,50 +157,6 @@
                 | Arguments                |    35 | 1.11KB   |                     | HTMLDivElement              |    29 | 1.17KB   |
                 |--------------------------+-------+----------|                     | d                           |    28 | 1.01KB   |
                                                                                     |-----------------------------+-------+----------|
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             - [X] guage code style
             - [X] remove toDataURL method
             - [X] painting code
@@ -238,14 +194,15 @@
         - finally use strokeText
         
 *** Exporter
-***** TODO org -> json/sheet [0/4]
+***** TODO org -> json/sheet [1/4]
       SCHEDULED: <2011-02-20 Sun 03:30>
+      CLOCK: [2011-02-22 Tue 17:24]
       :PROPERTIES:
       :Effort:   5:00
       :END:
-      - [ ] exporter how to
-      - [ ] export from list to json
+      - [X] export from list to json
       - [ ] server.rb proxy to v8 script
+      - [ ] exporter how to
       - [ ] inserting chart drawing data
 ***** TODO json/sheet diff -> notification message  [2/7]
       SCHEDULED: <2011-02-20 Sun 08:45>
