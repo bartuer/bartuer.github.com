@@ -72,7 +72,7 @@ var tools = {};
         childViews: [{
           view: 'Box',
           id: 'canvas_container',
-          rect: '0 0 800 600',
+          rect: '0 0 3200 600',
           anchors: 'left top right bottom',
           childViews: [{
             view: 'HFlow',
@@ -85,27 +85,7 @@ var tools = {};
               rect: '0 0 315 250',
               background: 'black',
               anchors: 'top left right bottom',
-              name: 'day',
-              style: {
-                border: 'dashed 2px #999'
-              }
-            },
-            {
-              view: 'tools.progressBar.canvas',
-              rect: '0 0 315 250',
-              background: 'black',
-              anchors: 'top left right bottom',
-              name: 'week',
-              style: {
-                border: 'dashed 2px #999'
-              }
-            },
-            {
-              view: 'tools.progressBar.canvas',
-              rect: '0 0 315 250',
-              background: 'black',
-              anchors: 'top left right bottom',
-              name: 'month',
+              name: 'monthview',
               style: {
                 border: 'dashed 2px #999'
               }
@@ -119,27 +99,8 @@ var tools = {};
     return p;
   };
 
-  window.onload = function () {
-    var progressBar = tools.progressBar.build();
-    maindiv = document.getElementById('main');
-    progressBar.attachTo(window, '400 400');
-
-    document.canvas_scroller = new Scroller('canvas_container', {
-      scrollY: true,
-      scrollX: true,
-      height: 200,
-      width: 200
-    });
-
-    var canvas_0 = progressBar.find('Canvas')[0];
-    draw_day(canvas_0);
-    var canvas_1 = progressBar.find('Canvas')[1];
-    draw_week(canvas_1);
-    var canvas_2 = progressBar.find('Canvas')[2];
-    draw_month(canvas_2);
-  };
-
   function make_gauge(canvas, option) {
+
 
     var default_option = {
       colors: ['#316DC8', '#DF7510', '#64A8E5', '#00aa00'],
@@ -209,6 +170,8 @@ var tools = {};
     ctx.lineTo(70, 140);
     ctx.lineTo(120, 100);
     ctx.lineTo(150, 110);
+    ctx.lineTo(160, 130);
+    ctx.lineTo(200, 170);
     ctx.stroke();
     ctx.closePath();
 
@@ -218,7 +181,8 @@ var tools = {};
     draw_dot(ctx, 70, 140, green_dot);
     draw_dot(ctx, 120, 100, green_dot);
     draw_dot(ctx, 150, 110, green_dot);
-
+    draw_dot(ctx, 160, 130, green_dot);
+    draw_dot(ctx, 200, 170, green_dot);
     ctx.restore();
 
     ctx.save();
@@ -254,18 +218,17 @@ var tools = {};
     ctx.shadowOffsetX = 0;
     ctx.shadowOffsetY = 0;
     ctx.shadowBlur = 0;
-    ctx.strokeText('20%', 200, 40 , 32, 200, 100, 90);
+    ctx.strokeText('20%', 200, 40, 32, 200, 100, 90);
 
     var months = ['March', 'Apr', 'May', 'June'];
     ctx.strokeStyle = 'black';
     for (var i = 0; i < 4; i += 1) {
-      ctx.strokeText(months[i], 20 + 80 * i, 220 , 12, 150, 100, 90);
+      ctx.strokeText(months[i], 20 + 80 * i, 220, 12, 150, 100, 90);
     }
 
     ctx.restore();
 
   }
-
 
   function draw_day(canvas) {
     var ctx = canvas.width(316).height(250).ctx();
@@ -322,5 +285,51 @@ var tools = {};
       ctx.strokeText(d[i], 25 + 40 * i, 220, 12, 150, 100, 90);
     }
   }
+
+  window.onload = function () {
+    var progressBar = tools.progressBar.build();
+    maindiv = document.getElementById('main');
+    progressBar.attachTo(window, '400 400');
+
+    document.canvas_scroller = new Scroller('canvas_container', {
+      scrollY: true,
+      scrollX: true,
+      height: 200,
+      width: 200
+    });
+    var weekcanvas = uki({
+      view: 'tools.progressBar.canvas',
+      rect: '0 0 315 250',
+      background: 'black',
+      anchors: 'top left right bottom',
+      name: 'weekview',
+      style: {
+        border: 'dashed 2px #999'
+      }
+    });
+    uki('HFlow').append(weekcanvas);
+
+    for (var j = 0; j < 7; j += 1) {
+      uki('HFlow').append(uki({
+        view: 'tools.progressBar.canvas',
+        rect: '0 0 315 250',
+        background: 'black',
+        anchors: 'top left right bottom',
+        name: 'dayview',
+        style: {
+          border: 'dashed 2px #999'
+        }
+      }));
+    }
+
+    for (var day_canvas = progressBar.find('[name=dayview]'), i = 0; i < day_canvas.length; i += 1) {
+      draw_day(day_canvas[i]);
+    }
+    var canvas_1 = progressBar.find('[name=weekview]')[0];
+    draw_week(canvas_1);
+    var canvas_2 = progressBar.find('[name=monthview]')[0];
+    draw_month(canvas_2);
+  };
+
 
 })();

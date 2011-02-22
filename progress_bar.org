@@ -63,9 +63,9 @@
             - [X] transparent
             - [ ] overlay
             - [ ] jumper
-*********** TODO layout [4/4]
+*********** DONE layout [4/4]
             SCHEDULED: <2011-02-19 Sat 19:50>
-            CLOCK: [2011-02-22 Tue 07:20]
+            CLOCK: [2011-02-22 Tue 07:20]--[2011-02-22 Tue 07:50] =>  0:30
             :PROPERTIES:
             :Effort:   3:00
             :Clockhistory: 6
@@ -75,6 +75,7 @@
             | :Clock4: | [2011-02-21 Mon 15:38]--[2011-02-21 Mon 16:25] =>  0:47 | fix postion       |
             | :Clock5: | [2011-02-21 Mon 18:38]--[2011-02-21 Mon 19:16] =>  0:38 | switch to scratch |
             | :Clock6: | [2011-02-22 Tue 05:38]--[2011-02-22 Tue 07:09] =>  1:31 | month scratch     |
+            :Commit:   (git-link "/Users/bartuer/local/src/bartuer.github.com" "layout")
             :END:
             - [X] day
                 - stand out number
@@ -206,6 +207,7 @@
 *********** ABORT try highchart
 *********** TODO json -> canvas code [1/2]
             SCHEDULED: <2011-02-20 Sun 02:15>
+            CLOCK: [2011-02-22 Tue 10:31]
             :PROPERTIES:
             :Effort:   1:00
             :END:
