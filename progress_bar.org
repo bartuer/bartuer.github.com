@@ -205,13 +205,14 @@
             - [X] remove toDataURL method
             - [X] painting code
 *********** ABORT try highchart
-*********** TODO json -> canvas code [1/2]
+*********** DONE json -> canvas code [2/2]
             SCHEDULED: <2011-02-22 Tue 02:15>
-            CLOCK: [2011-02-22 Tue 10:31]--
+            CLOCK: [2011-02-22 Tue 10:31]--[2011-02-22 Tue 15:27] =>  4:56
             :PROPERTIES:
             :Effort:   1:00
+            :Commit: 
             :END:
-            - [ ] var
+            - [X] var
                   - clock history
                     take Done clock
                   - span days
@@ -242,20 +243,22 @@
       :PROPERTIES:
       :Effort:   5:00
       :END:
-      - [ ] agenda how to
-      - [ ] single file exporter
-      - [ ] multiple file exporter
-      - [ ] save hook
-***** TODO json/sheet diff -> notification message  [0/7]
+      - [ ] exporter how to
+      - [ ] export from list to json
+      - [ ] server.rb proxy to v8 script
+      - [ ] inserting chart drawing data
+***** TODO json/sheet diff -> notification message  [2/7]
       SCHEDULED: <2011-02-20 Sun 08:45>
       :PROPERTIES:
       :Effort:   5:00
       :END:
-      - [ ] server.rb
-      - [ ] compare Object
-      - [ ] message generator
-      - [ ] git push function
-      - [ ] notify function
+      - [X] compare Object
+            do not sure if worth to do that
+      - [X] message generator
+            using commit message is okay
+      - [ ] draw from json
+      - [ ] build to one huge html file
+      - [ ] prompt commit message
       - [ ] hook git push
       - [ ] hook notifo
 *** DONE Notify
