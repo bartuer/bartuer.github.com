@@ -1,6 +1,7 @@
 var tools = {};
 
 (function () {
+  include('data.js');
   include('frameworks/uki/src/uki-theamless.js');
   include('frameworks/uki/src/uki-theme/airport.js');
   include('frameworks/uki/src/uki-data/ajax.js');
@@ -262,7 +263,7 @@ var tools = {};
     ctx.fillStyle = 'white';
     ctx.fillRect(0, 0, w, h);
     var a = [0.7, 0.65, 0.37, 0.48, 0.84, 0.75, 0.92];
-    var d = ['Sun', 'Mon', 'Tue', 'Wen', 'Thu', 'Fri', 'Sat'];
+    var d = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
     document.font_feature = check_textRenderContext(ctx);
     set_textRenderContext(ctx);
@@ -297,6 +298,7 @@ var tools = {};
       height: 200,
       width: 200
     });
+
     var weekcanvas = uki({
       view: 'tools.progressBar.canvas',
       rect: '0 0 315 250',
@@ -322,13 +324,12 @@ var tools = {};
       }));
     }
 
+    var month_canvas = progressBar.find('[name=monthview]')[0];
+    draw_month(month_canvas);
+    draw_week(weekcanvas[0]);
     for (var day_canvas = progressBar.find('[name=dayview]'), i = 0; i < day_canvas.length; i += 1) {
       draw_day(day_canvas[i]);
     }
-    var canvas_1 = progressBar.find('[name=weekview]')[0];
-    draw_week(canvas_1);
-    var canvas_2 = progressBar.find('[name=monthview]')[0];
-    draw_month(canvas_2);
   };
 
 

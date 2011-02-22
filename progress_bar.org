@@ -206,12 +206,28 @@
             - [X] painting code
 *********** ABORT try highchart
 *********** TODO json -> canvas code [1/2]
-            SCHEDULED: <2011-02-20 Sun 02:15>
-            CLOCK: [2011-02-22 Tue 10:31]
+            SCHEDULED: <2011-02-22 Tue 02:15>
+            CLOCK: [2011-02-22 Tue 10:31]--
             :PROPERTIES:
             :Effort:   1:00
             :END:
             - [ ] var
+                  - clock history
+                    take Done clock
+                  - span days
+                    split to many
+                  - idle time
+                    insert empty segment
+                  - percent should be how many planed tasks finished
+                    not how much hours I have worked on
+                  - do not draw empty day in week chart
+                  - include week define
+                  - include month define
+                  - the differ can be written as v8 script
+                    - JSON is wrong method
+                    - it is not only tell true or false
+                    - it should be easy to tell where is the difference
+                    - but seems easy to find the string when commit
             - [X] ajax
                   if build all into one huge html, this is unnecessary 
 ******* DONE font
