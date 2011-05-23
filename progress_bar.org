@@ -1,4 +1,3 @@
-
 *     
 *** UI  
 ***** scroll
@@ -194,29 +193,105 @@
         - finally use strokeText
         
 *** Exporter
-***** TODO org -> json/sheet [1/4]
+***** DONE extract org entries [4/4]
       SCHEDULED: <2011-02-20 Sun 03:30>
-      CLOCK: [2011-02-22 Tue 17:24]
+      CLOCK: [2011-02-24 Thu 01:58]--[2011-02-24 Thu 05:25] =>  3:27
       :PROPERTIES:
       :Effort:   5:00
+      :Clockhistory: 3
+      | :Clock1: | [2011-02-22 Tue 17:24]--[2011-02-22 Tue 21:40] =>  4:16 | node   |
+      | :Clock2: | [2011-02-23 Wed 13:24]--[2011-02-23 Wed 16:10] =>  2:46 | search |
+      | :Clock3: | [2011-02-23 Wed 20:12]--[2011-02-23 Wed 22:15] =>  2:03 | hack   |
+      :Commit:   (git-link "~/etc/el" "53c487a22cfd4e31ed4e75ea9e313f13e82033d1")
+      :Commit:   (git-link "~/etc/el" "7301e681d743319ae6a8b5b77e635bc33348e185")
       :END:
       - [X] export from list to json
-      - [ ] server.rb proxy to v8 script
-      - [ ] exporter how to
-      - [ ] inserting chart drawing data
-***** TODO json/sheet diff -> notification message  [2/7]
+      - [X] server.rb proxy to v8 script
+      - [X] exporter how to
+            - basic
+              - (org-buffer-property-keys)
+              - (org-entry-get (point) "NAME")
+              - (org-get-heading)
+              - (org-back-to-heading)
+              - (org-at-heading-or-item-p)
+              - (org-at-heading-p)
+              - (org-at-property-p)
+              - (org-get-property-block)
+              - (org-speed-command-help)
+              - (org-columns)
+              - (org-columns-capture-view)
+              - (org-timeline)
+              - (org-timeline-show-empty-dates)
+              - (org-agenda-columns)
+
+            - agenda
+              - (org-entry-properties (point))
+              - (org-heading-components)
+              - (get-text-property (point) 'org-hd-marker)
+              - (org-agenda-next-line) should return path
+              - (get-text-property (point) 'org-agenda-date-header)
+              - (get-text-property (point) 'day)
+      - [X] respect
+            - (org-default-export-plist)
+            - (org-infile-export-plist)
+***** DONE org -> time sense json  [3/3]
       SCHEDULED: <2011-02-20 Sun 08:45>
+      CLOCK: [2011-02-26 Sat 10:01]--[2011-02-26 Sat 12:57] =>  2:56
       :PROPERTIES:
       :Effort:   5:00
+      :Clockhistory: 4
+      | :Clock1: | [2011-02-24 Thu 12:15]--[2011-02-24 Thu 17:17] =>  5:02 | days bake     |
+      | :Clock2: | [2011-02-25 Fri 07:14]--[2011-02-25 Fri 07:38] =>  0:24 | fix bug       |
+      | :Clock3: | [2011-02-25 Fri 10:50]--[2011-02-25 Fri 14:09] =>  3:19 | happy hacking |
+      | :Clock4: | [2011-02-25 Fri 17:41]--[2011-02-25 Fri 21:30] =>  3:49 | losing combat |
+      :Commit:   (git-link "~/etc/el" "timeline-2-json")
       :END:
       - [X] compare Object
             do not sure if worth to do that
       - [X] message generator
             using commit message is okay
+      - [X] inserting chart drawing data
+            - insert in js or lisp side are same?
+              - time related better done at lisp side
+              - communication related better done at js/ruby side
+            - check todo
+            - add effort
+            - split clock
+            - convert time stamp to fraction
+            - calculate effort percent
+            - count/copy tasks to week
+            - copy percent to week
+            - sum tasks to month
+            - week number or index?
+              name is better
+            - month names
+            - month weeks
+
+            - total effort
+            - handle time range span days
+***** TODO link M V C  [0/5]
       - [ ] draw from json
       - [ ] build to one huge html file
+            - the huge one should be cached on server
+            - only two request send from browser:
+              - not modified
+              - json data
       - [ ] prompt commit message
       - [ ] hook git push
+            do it in twin server
       - [ ] hook notifo
+            just send mail in twin server 
 *** DONE Notify
     it works from beginning
+*** improve
+***** TODO cache latest chart [0/2]
+      - [ ] save latest three chart to local storage
+      - [ ] show image first
+        - it should be pretty fast
+        - when new data available
+          - clear canvas
+          - draw new one
+          - show user a lovely message
+
+***** TODO link to org export html
+***** TODO link to calendar 
